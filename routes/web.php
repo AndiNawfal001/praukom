@@ -1,0 +1,65 @@
+<?php
+
+use App\Http\Controllers\DashboardController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\KaprogController;
+use App\Http\Controllers\LevelUserController;
+use App\Http\Controllers\LoginController;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+
+Route::get('/dashboard',[DashboardController::class,'dashboard'])->middleware('auth');
+
+Route::get('/barang', function () {
+    return view('barang.index');
+});
+
+Route::get('/barangmasuk', function () {
+    return view('brg.barangmasuk');
+});
+
+Route::get('/user', function () {
+    return view('user.index');
+});
+
+// Route::get('/levelUser',[LevelUserController::class,'index']);
+Route::get('/levelUser/tambah',[LevelUserController::class,'formTambah']);
+Route::post('/levelUser/simpan',[LevelUserController::class,'simpan']);
+
+
+Route::get('login',[LoginController::class,'login'])->name('login');
+Route::post('/login',[LoginController::class,'authenticate']);
+Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::get('/inner-join', [LoginController::class, 'innerjoin']);
+
+//Route Group untuk menggabungkan banyaknya middleware
+Route::group(['middleware' => ['auth','level:admin,manajemen']], function (){
+    Route::get('/levelUser',[LevelUserController::class,'index']);
+});
+
+Route::get('/User',[ UserController::class,'index']);
+Route::get('/User/tambah',[ UserController::class,'formTambah']);
+Route::post('/User/simpan',[ UserController::class,'simpan']);
+
+// Route::get('/User/kaprog',[ KaprogController::class,'index']);
+
+Route::get('/User/kaprog', [KaprogController::class, 'index']);
+
+

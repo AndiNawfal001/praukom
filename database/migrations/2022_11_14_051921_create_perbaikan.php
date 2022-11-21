@@ -1,0 +1,42 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('perbaikan', function (Blueprint $table) {
+            $table->string('id_perbaikan')->primary();
+            $table->integer('kode_barang');
+            $table->string('nama_pelaksana');
+            $table->datetime('tgl');
+            $table->text('ket');
+
+            // Foreign key untuk kode_barang
+            $table
+            ->foreign('kode_barang')
+            ->references('kode_barang')
+            ->on('detail_barang')
+            ->cascadeOnUpdate()
+            ->cascadeOnDelete();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('perbaikan');
+    }
+};
