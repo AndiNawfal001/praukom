@@ -30,17 +30,20 @@ class UserController extends Controller
     {
         try {
 
-        $tambahpengguna = DB::insert("CALL tambah_barangmasuk(:username, :email, :hashing_password, :kondisi_barang, :supplier, :nama_manajemen, :jenis_barang, :foto_barang)", [
+        $tambahpengguna = DB::insert("CALL tambah_pengguna(:username, :email, :hashing_password, :nama, :kontak, :levelUser )", [
             'username' => $request->input('username'),
             'email' => $request->input('email'),
             'hashing_password' => Hash::make($request->input('hashing_password')),
-            'kondisi_barang' => $request->input('kondisi_barang'),
+            'nama' => $request->input('nama'),
+            'kontak' => $request->input('kontak'),
+            'levelUser' => $request->input('levelUser'),
+
             
-            //dd($request->all())
+            // dd($request->all())
         ]);
 
         if ($tambahpengguna)
-            return redirect('pengguna');
+            return redirect('User');
         else
             return "input data gagal";
         } catch (\Exception $e) {

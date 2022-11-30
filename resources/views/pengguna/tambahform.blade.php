@@ -19,17 +19,33 @@
              </label>
              <input type="email" name="email" class="input input-bordered" />
            </div>
+
            <div class="form-control">
              <label class="label">
                <span class="label-text">Password</span>
              </label>
-             <input type="text" name="password" class="input input-bordered" />
+             <input type="text" name="hashing_password" class="input input-bordered" />
            </div>
+
+           <div class="form-control">
+            <label class="label">
+              <span class="label-text">Nama</span>
+            </label>
+            <input type="text" name="nama" class="input input-bordered" />
+          </div>
+
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text">Kontak</span>
+            </label>
+            <input type="number" name="kontak" class="input input-bordered" />
+          </div>
+
            <div class="form-control">
                 <label class="label">
                     <span class="label-text">Pilih Level User</span>
                 </label>
-                <select class="select select-bordered w-full max-w-xs" name="id_level">
+                <select class="select select-bordered w-full max-w-xs" name="levelUser">
                     @foreach ($lu as $item)
                         <option value="{{ $item->id_level }}">{{ $item->nama_level }}</option>
                     @endforeach
