@@ -9,6 +9,7 @@
         <th>Nama Supplier</th>
         <th>Kontak</th>
         <th>Alamat</th>
+        <th>Aksi</th>
 
         {{-- <th>Password</th> --}}
 
@@ -20,6 +21,10 @@
         <td>{{ $key->nama }}</td>
         <td>{{ $key->kontak }}</td>
         <td>{{ $key->alamat }}</td>
+        <td>
+            <a href="supplier/edit/{{$key->id_supplier}}"><button class="btn btn-sm btn-outline btn-info">EDIT</button></a>
+            <a href="supplier/hapus/{{$key->id_supplier}}"><button class="btn btn-sm btn-outline btn-warning">HAPUS</button></a>
+        </td>
         {{-- <td>{{ $key->password }}</td> --}}
 
       </tr>

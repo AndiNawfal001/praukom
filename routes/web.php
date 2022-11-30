@@ -70,6 +70,10 @@ Route::group(['middleware' => ['auth','level:manajemen']], function (){
 Route::get('/supplier',[ SupplierController::class,'index']);
 Route::get('/supplier/tambah',[ SupplierController::class,'formTambah']);
 Route::post('/supplier/simpan',[ SupplierController::class,'store']);
+Route::get('/supplier/edit/{id}',[SupplierController::class,'edit']);
+Route::post('/supplier/edit/editsimpan',[ SupplierController::class,'editsimpan']);
+Route::get('/supplier/hapus/{id}',[SupplierController::class,'hapus']);
+
 
 
 
