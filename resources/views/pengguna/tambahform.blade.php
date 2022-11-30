@@ -30,7 +30,7 @@
                     <span class="label-text">Pilih Level User</span>
                 </label>
                 <select class="select select-bordered w-full max-w-xs" name="id_level">
-                    @foreach ($level as $item)
+                    @foreach ($lu as $item)
                         <option value="{{ $item->id_level }}">{{ $item->nama_level }}</option>
                     @endforeach
                 </select>

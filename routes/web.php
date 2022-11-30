@@ -36,9 +36,6 @@ Route::get('/barangmasuk', function () {
     return view('brg.barangmasuk');
 });
 
-Route::get('/user', function () {
-    return view('user.index');
-});
 
 // Route::get('/levelUser',[LevelUserController::class,'index']);
 Route::get('/levelUser/tambah',[LevelUserController::class,'formTambah']);
@@ -49,7 +46,6 @@ Route::get('login',[LoginController::class,'login'])->name('login');
 Route::post('/login',[LoginController::class,'authenticate']);
 Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::get('/inner-join', [LoginController::class, 'innerjoin']);
 
 //Route Group untuk menggabungkan banyaknya middleware
 Route::group(['middleware' => ['auth','level:admin,manajemen']], function (){

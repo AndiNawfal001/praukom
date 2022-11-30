@@ -16,20 +16,21 @@
 </div>
   <div class="overflow-x-auto overflow-y-auto">
     <table class="table w-full ">
+      
       <tr>
         <th></th>
         <th>Username</th>
         <th>Email</th>
-        {{-- <th>Password</th> --}}
-        <th>Level user</th>
+        <th>Akses </th>
       </tr>
+
       <?php $no=1;?>
-      @foreach($User as $key)
+      @foreach($data as $key)
+
       <tr>
         <th>{{ $no++ }}</th>
         <td>{{ $key->username }}</td>
         <td>{{ $key->email }}</td>
-        {{-- <td>{{ $key->password }}</td> --}}
         <td><p class="font-semibold">{{ $key->nama_level }}</p></td>
 
       </tr>
