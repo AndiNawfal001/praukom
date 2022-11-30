@@ -44,15 +44,5 @@ return new class extends Migration
 
           END;"
         );
-      }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('procedure_tambah_supplier');
     }
 };
