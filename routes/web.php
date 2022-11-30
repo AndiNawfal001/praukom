@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\KaprogController;
 use App\Http\Controllers\LevelUserController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\SupplierController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -68,6 +69,11 @@ Route::group(['middleware' => ['auth','level:manajemen']], function (){
     Route::get('/barang/tambah',[ BarangMasukController::class,'formTambah']);
     Route::post('/barang/simpan',[ BarangMasukController::class,'store']);
 });
+
+
+Route::get('/supplier',[ SupplierController::class,'index']);
+Route::get('/supplier/tambah',[ SupplierController::class,'formTambah']);
+Route::post('/supplier/simpan',[ SupplierController::class,'store']);
 
 
 

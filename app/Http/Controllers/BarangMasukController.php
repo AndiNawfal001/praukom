@@ -31,27 +31,27 @@ class BarangMasukController extends Controller
     }
 
     public function store(Request $request)
-  {
-    try {
+    {
+        try {
 
-      $tambahBarangMasuk = DB::insert("CALL tambah_barangmasuk(:nama_barang, :jml_barang, :spesifikasi, :kondisi_barang, :supplier, :nama_manajemen, :jenis_barang, :foto_barang)", [
-        'nama_barang' => $request->input('nama_barang'),
-        'jml_barang' => $request->input('jml_barang'),
-        'spesifikasi' => $request->input('spesifikasi'),
-        'kondisi_barang' => $request->input('kondisi_barang'),
-        'supplier' => $request->input('supplier'),
-        'nama_manajemen' => $request->input('nama_manajemen'),
-        'jenis_barang' => $request->input('jenis_barang'),
-        'foto_barang' => $request->input('foto_barang'),
-        //  dd($request->all())
-      ]);
+        $tambahBarangMasuk = DB::insert("CALL tambah_barangmasuk(:nama_barang, :jml_barang, :spesifikasi, :kondisi_barang, :supplier, :nama_manajemen, :jenis_barang, :foto_barang)", [
+            'nama_barang' => $request->input('nama_barang'),
+            'jml_barang' => $request->input('jml_barang'),
+            'spesifikasi' => $request->input('spesifikasi'),
+            'kondisi_barang' => $request->input('kondisi_barang'),
+            'supplier' => $request->input('supplier'),
+            'nama_manajemen' => $request->input('nama_manajemen'),
+            'jenis_barang' => $request->input('jenis_barang'),
+            'foto_barang' => $request->input('foto_barang'),
+            //dd($request->all())
+        ]);
 
-      if ($tambahBarangMasuk)
-        return redirect('barang');
-      else
-        return "input data gagal";
-    } catch (\Exception $e) {
-      return  $e->getMessage();
+        if ($tambahBarangMasuk)
+            return redirect('barang');
+        else
+            return "input data gagal";
+        } catch (\Exception $e) {
+        return  $e->getMessage();
+        }
     }
-  }
 }

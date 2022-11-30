@@ -35,7 +35,7 @@
                 @endcan
 
                 <li class="hover:bg-base-100 rounded-lg">
-                    <a href="/levelUser" class="flex items-center p-2">
+                    <a href="/supplier" class="flex items-center p-2">
                     <svg aria-hidden="true" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg>
                     <span class="flex-1 ml-3 whitespace-nowrap">Supplier</span>
                     </a>
