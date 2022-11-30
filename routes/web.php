@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BarangMasukController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -24,7 +25,7 @@ Route::get('/', function () {
 });
 
 
-Route::get('/dashboard',[DashboardController::class,'dashboard'])->middleware('auth');
+Route::get('/dashboard',[DashboardController::class,'dashboard']);
 
 Route::get('/barang', function () {
     return view('barang.index');
@@ -61,5 +62,14 @@ Route::post('/User/simpan',[ UserController::class,'simpan']);
 // Route::get('/User/kaprog',[ KaprogController::class,'index']);
 
 Route::get('/User/kaprog', [KaprogController::class, 'index']);
+
+Route::group(['middleware' => ['auth','level:manajemen']], function (){
+    Route::get('/barang',[ BarangMasukController::class,'index']);
+    Route::get('/barang/tambah',[ BarangMasukController::class,'formTambah']);
+    Route::post('/barang/simpan',[ BarangMasukController::class,'store']);
+});
+
+
+
 
 

@@ -26,11 +26,11 @@
               <span class="alert alert-error shadow-lg">{{ $err }}</span>
               @endforeach
               @endif
-              <form action="/login" method="POST">
+              <form action="login" method="POST">
                 @csrf
                 <div class="form-control">
                 <label class="label">
-                    <span class="label-text" for="email">Username</span>
+                    <span class="label-text" for="email">Email</span>
                 </label>
                 <input type="email" name="email" id="email" placeholder="email" class="input input-bordered @error('email') @enderror"  autofocus required value="{{ old ('email') }}"/>
 

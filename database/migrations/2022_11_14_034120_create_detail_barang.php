@@ -14,7 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('detail_barang', function (Blueprint $table) {
-            $table->integer('kode_barang')->primary();
+            $table->engine = 'InnoDB';
+            $table->charset = 'utf8mb4';
+            $table->collation = 'utf8mb4_general_ci';
+            $table->integer('kode_barang', true);
             $table->string('spesifikasi');
             $table->string('kondisi_barang');
             $table->string('foto_barang');

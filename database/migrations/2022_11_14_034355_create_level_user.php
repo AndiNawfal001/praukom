@@ -14,9 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::create('level_user', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
+            $table->charset = 'utf8mb4';
+            $table->collation = 'utf8mb4_general_ci';
             $table->string('id_level', 4)->primary();
             $table->string('nama_level', 20);
-            $table->text('ket'); 
+            $table->text('ket');
         });
     }
 

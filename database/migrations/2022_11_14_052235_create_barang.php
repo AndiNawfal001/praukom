@@ -14,11 +14,14 @@ return new class extends Migration
     public function up()
     {
         Schema::create('barang', function (Blueprint $table) {
-            $table->string('id_barang')->primary();
+            $table->engine = 'InnoDB';
+            $table->charset = 'utf8mb4';
+            $table->collation = 'utf8mb4_general_ci';
+            $table->integer('id_barang', true);
             $table->integer('kode_barang');
             $table->string('id_jenis_brg');
             $table->string('nama_barang');
-            $table->string('jml_barang');
+            $table->integer('jml_barang');
 
             // Foreign key untuk kode_barang
             $table

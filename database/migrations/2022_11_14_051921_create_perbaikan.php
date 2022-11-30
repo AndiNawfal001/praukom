@@ -14,6 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('perbaikan', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
+            $table->charset = 'utf8mb4';
+            $table->collation = 'utf8mb4_general_ci';
             $table->string('id_perbaikan')->primary();
             $table->integer('kode_barang');
             $table->string('nama_pelaksana');

@@ -8,12 +8,12 @@
 <body >
 @include('partials.navbar')
 
-<div class="lg:flex ">
+<div class="lg:flex select-none">
     <div class="lg:basis-1/5 relative hidden lg:block  sidebar">
         @include('partials.sidebar')
     </div>
 
-    <div class="lg:basis-4/5 lg:p-10">
+    <div class="lg:basis-4/5">
         @yield('container')
 
     </div>
