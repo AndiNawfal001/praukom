@@ -20,11 +20,18 @@ class UserController extends Controller
         return collect(DB::select('SELECT * FROM level_user'));
     }
 
+    private function getPengguna($id)
+    {
+        return collect(DB::select('SELECT * FROM pengguna WHERE pengguna.id_pengguna = ?', [$id]))->firstOrFail();
+    }
+
     public function formtambah() {
         $lu = $this->getJenisBarang();
 
         return view('pengguna.tambahform', compact('lu'));
     }
+
+
 
     public function simpan(Request $request)
     {
@@ -48,6 +55,49 @@ class UserController extends Controller
             return "input data gagal";
         } catch (\Exception $e) {
         return  $e->getMessage();
+        }
+    }
+
+    public function edit($id = null)
+    {
+
+        $edit = $this->getPengguna($id);
+        //dd($edit);
+        return view('pengguna.editform', compact('edit'));
+    }
+
+    public function editsimpan(Request $request)
+    {
+        try {
+            $data = [
+                'username'   => $request->input('username'),
+                'email' => $request->input('email'),
+                
+            ];
+            //dd($data);
+            $upd = DB::table('pengguna')
+                        ->where('id_pengguna', '=', $request->input('id_pengguna'))
+                        ->update($data);
+            if($upd){
+                return redirect('/User');
+            }
+            //dd("berhasi", $upd);
+        } catch (\Exception $e) {
+            return $e->getMessage();
+            dd("gagal");
+        }
+    }
+
+    public function hapus($id=null){
+        try{
+            $hapus = DB::table('pengguna')
+                            ->where('id_pengguna',$id)
+                            ->delete();
+            if($hapus){
+                return redirect('User');
+            }
+        }catch(\Exception $e){
+            $e->getMessage();
         }
     }
 

@@ -55,6 +55,9 @@ Route::group(['middleware' => ['auth','level:admin,manajemen']], function (){
 Route::get('/User',[ UserController::class,'index']);
 Route::get('/User/tambah',[ UserController::class,'formTambah']);
 Route::post('/User/simpan',[ UserController::class,'simpan']);
+Route::get('/User/edit/{id}',[UserController::class,'edit']);
+Route::post('/User/edit/editsimpan',[ UserController::class,'editsimpan']);
+Route::get('/User/hapus/{id}',[UserController::class,'hapus']);
 
 // Route::get('/User/kaprog',[ KaprogController::class,'index']);
 

@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.main')  
 @section('container')
 <div class="p-5 lg:p-0">
 <h1 class="text-2xl font-semibold leading-loose">Pengguna</h1>
@@ -22,6 +22,7 @@
         <th>Username</th>
         <th>Email</th>
         <th>Akses </th>
+        <th>Aksi</th>
       </tr>
 
       <?php $no=1;?>
@@ -32,7 +33,10 @@
         <td>{{ $key->username }}</td>
         <td>{{ $key->email }}</td>
         <td><p class="font-semibold">{{ $key->nama_level }}</p></td>
-
+        <td>
+        <a href="User/edit/{{$key->id_pengguna}}"><button class="btn btn-sm btn-outline btn-info">EDIT</button></a>
+        <a href="User/hapus/{{$key->id_pengguna}}"><button class="btn btn-sm btn-outline btn-warning">Hapus</button></a>
+        </td>
       </tr>
       @endforeach
 

@@ -17,7 +17,7 @@ return new class extends Migration
         DB::unprepared(
             "CREATE OR REPLACE VIEW banyak_pengguna AS (
               SELECT
-              pengguna.username, pengguna.email,
+              pengguna.*,
               level_user.nama_level
               
               FROM pengguna

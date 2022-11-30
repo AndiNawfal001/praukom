@@ -41,13 +41,13 @@
             <input type="number" name="kontak" class="input input-bordered" />
           </div>
 
-           <div class="form-control">
+           <div class="form-control hidden">
                 <label class="label">
                     <span class="label-text">Pilih Level User</span>
                 </label>
                 <select class="select select-bordered w-full max-w-xs" name="levelUser">
                     @foreach ($lu as $item)
-                        <option value="{{ $item->id_level }}">{{ $item->nama_level }}</option>
+                        <option value="{{ $item->id_level }}">{{ $item->nama_level === 'admin' }}</option>
                     @endforeach
                 </select>
            </div>
